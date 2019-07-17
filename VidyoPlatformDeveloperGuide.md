@@ -41,8 +41,6 @@ Some of the features of the VidyoPlatform include:
 * Multi-party audio and video conferencing
 * Group chat
 * Application sharing
-* Video recording
-* Interoperability with 3rd party SIP systems
 
 The VidyoClient SDK offers the same APIs on all supported platforms, providing a fast learning curve and enabling rapid development on all device types.
 
@@ -125,7 +123,7 @@ There are two important concepts in the VidyoPlatform that you need to understan
 1. Portal
 2. Room
 
-To make things simple, **portals** identify the top level domain that a user connects and **rooms** are meeting points for your users beneath a particular portal. A room can either be provisioned ahead of time or may be created by your application ad hoc via the VidyoPlatform Server API.
+To make things simple, **portals** identify the top level domain that a user connects to and **rooms** are meeting points for your users beneath a particular portal. A room can either be provisioned ahead of time or may be created by your application ad hoc via the VidyoPlatform Server API.
 
 Check out more about [portals][portals] and [rooms][rooms].
 
@@ -425,14 +423,14 @@ public class MyClass : Connector.IConnect
 <a class="headerAnchor" name="Portals"></a>
 ## Portals
 
-TODO
+The portal is a centralized call control service that is part of the VidyoPlatform infrastructure. It acts as the back-end server that handles all web service API requests. The portal can be virtually subdivided into individual logical segments called tenants. If you are working with an individual tenant, use the tenant FQDN for the portal address. 
 
 ---
 
 <a class="headerAnchor" name="Rooms"></a>
 ## Rooms
 
-In the VidyoPlatform, rooms are virtual meeting points in your application, that can either be created in advance (TODO: maybe add some description how here) or created ad-hoc via the VidyoPlatform Server API.
+In the VidyoPlatform, rooms are virtual meeting points in your application, which can be created via the [VidyoPlatform Server API](https://support.vidyocloud.com/hc/en-us/articles/360007515433-Web-Services-API-User-Guide).
 
 A room operates in the VidyoPlatform as a collection of users joining in a video session together. These users are referred to as participants. You can get notified on participant updates or send and receive messages with participants connected to the same room.
 
@@ -2928,7 +2926,7 @@ This section explains how to download and run the VidyoConnector.html from GitHu
 1. The browser displays the web app with a login form on the left and a preview image from the video camera on the right.
 1. Review the login form. See [VidyoConnector parameters][vidyoConnector] for more details.
 
-  ![The VidyoConnector App Login Form](./images/vp-javascript-app-log-in-form.png)
+  ![The VidyoConnector App Login Form](./images/javascript-app-log-in-form.png)
 
    * **Camera**: list of the cameras that are available
    * **Microphone**: list of the microphones that are available
