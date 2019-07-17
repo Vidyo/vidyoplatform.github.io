@@ -51,13 +51,13 @@ To learn more about how to get the most out of the VidyoPlatform, we invite you 
 ---
 ## Available Resources
 
-# VidyoPlatform Developer Guide
+<b>VidyoPlatform Developer Guide</b>
 This document. The Developer Guide will introduce the key concepts of the VidyoPlatform and provide instruction for building the reference application.
 
-# <a href="https://support.vidyocloud.com/hc/en-us/articles/360007515433-Web-Services-API-User-Guide">Web Services API User Guide</a>
+<b><a href="https://support.vidyocloud.com/hc/en-us/articles/360007515433-Web-Services-API-User-Guide">Web Services API User Guide</a></b>
 The Web Services API is used for management and automation of the VidyoPlatform infrastructure.
 
-# <a href="https://developer.vidyo.io/#/reference-guide/">Vidyo API Reference</a>
+<b><a href="https://developer.vidyo.io/#/reference-guide/">Vidyo API Reference</a></b>
 The Vidyo API Reference lists all available APIs used with the VidyoClient SDK for creating custom video clients. This reference is hosted on vidyo.io and is common between vidyo.io and VidyoPlatform.
 ---
 <a class="headerAnchor" name="SupportedPlatforms"></a>
