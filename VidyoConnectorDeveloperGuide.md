@@ -58,6 +58,17 @@ Connecting to the Vidyo.io cloud is done by passing a token from your applicatio
 To learn more about how to get the most out of Vidyo.io, we invite you to review the [Key Concepts][keyConcepts] of our platform.
 
 ---
+##Available Resources
+
+#VidyoPlatform Developer Guide
+This document. The Developer Guide will introduce the key concepts of the VidyoPlatform and provide instruction for building the reference application.
+
+#<a href="https://support.vidyocloud.com/hc/en-us/articles/360007515433-Web-Services-API-User-Guide">Web Services API User Guide</a>
+The Web Services API is used for management and automation of the VidyoPlatform infrastructure.
+
+#<a href="https://developer.vidyo.io/#/reference-guide/">Vidyo API Reference</a>
+The Vidyo API Reference lists all available APIs used with the VidyoClient SDK for creating custom video clients. This reference is hosted on vidyo.io and is common between vidyo.io and VidyoPlatform.
+---
 
 <a class="headerAnchor" name="SupportedPlatforms"></a>
 ## Supported Platforms
@@ -1679,8 +1690,8 @@ Other considerations when using a custom layout:
 
 VC.CreateVidyoConnector({
   viewId: null,                                  // null indicates custom layout
-  viewStyle: "VIDYO_CONNECTORVIEWSTYLE_Default", // n/a for custom layout 
-  remoteParticipants: 15,                        // n/a for custom layout 
+  viewStyle: "VIDYO_CONNECTORVIEWSTYLE_Default", // n/a for custom layout
+  remoteParticipants: 15,                        // n/a for custom layout
   logFileFilter: "warning all@VidyoConnector info@VidyoClient",
   logFileName: "",
   userData: ""
@@ -2221,12 +2232,12 @@ public class MyClass : Connector.IRegisterLocalCameraEventListener, Connector.IR
 <a class="headerAnchor" name="RawFrame"></a>
 ## Access Raw Frames
 
-When using the custom layout above, you can register to access raw frames from both local and remote sources. 
+When using the custom layout above, you can register to access raw frames from both local and remote sources.
 
 Register a listener for raw `VidyoVideoFrame` or `VidyoAudioFrame` events using the following API:
 *  `RegisterLocalCameraFrameListener()`, `RegisterLocalWindowShareFrameListener()`, `RegisterLocalMonitorFrameListener()`, `RegisterLocalMicrophoneFrameListener()`, `RegisterRemoteCameraFrameListener()`, `RegisterRemoteWindowShareFrameListener()`, `RegisterRemoteMicrophoneFrameListener()`
 
-The callback per frame contains the necessary information to copy the raw frame into your own buffer: 
+The callback per frame contains the necessary information to copy the raw frame into your own buffer:
 * `VidyoVideoFrame` in **YCbCr**
 * `VidyoAudioFrame` in **PCM** format using a **32bit floating** point
 
@@ -2256,9 +2267,9 @@ void OnLocalCameraRemoved(VidyoConnector* c, VidyoLocalCamera* localCamera)
 { /* Existing Camera became unavailable */ }
 
 void OnLocalCameraSelected(VidyoConnector* c, VidyoLocalCamera* localCamera)
-{ 
+{
   /* The camera was selected either by a user or automatically. */
-  /* Register for the event listener with any requested width and height. */ 
+  /* Register for the event listener with any requested width and height. */
   if (!VidyoConnectorRegisterLocalCameraFrameListener(&vc, OnLocalCameraFrame, localCamera, requestedWidth, requestedHeight, 0)) {
     Logger::Instance().Log("VidyoConnectorRegisterLocalCameraFrameListener registration failed");
   }
@@ -2283,10 +2294,10 @@ void OnLocalCameraFrame(VidyoConnector* c, VidyoLocalCamera* localCamera, const 
   }
 
   fileStream = fileMap[filePath];
-  
+
   /* Determine whether the copy needs padding. */
   if (copyWidthPadding) {
-    /* Write the data pointer and the size of the video frame payload to a file. */ 
+    /* Write the data pointer and the size of the video frame payload to a file. */
     fileStream->write(videoFrame->data, length:videoFrame->size);
   } else {
     /* Copy the data, stripping out the padding and offset. */
@@ -2335,7 +2346,7 @@ void OnLocalMicrophoneRemoved(VidyoConnector* c, VidyoLocalMicrophone* localMicr
 { /* Existing Microphone became unavailable */ }
 
 void OnLocalMicrophoneSelected(VidyoConnector* c, VidyoLocalMicrophone* localMicrophone)
-{ 
+{
   /* Microphone was selected by user or automatically */
   if (!VidyoConnectorRegisterLocalMicrophoneFrameListener(&vc, OnLocalMicrophoneFrame, localMicrophone)) {
     Logger::Instance().Log("VidyoConnectorRegisterLocalMicrophoneFrameListener registration failed");
@@ -2360,7 +2371,7 @@ void OnLocalMicrophoneFrame(VidyoConnector* c, VidyoLocalMicrophone* localMicrop
   }
   fileStream = fileMap[filePath];
 
-  /* Write the data pointer and the size of the audio frame payload to a file. */ 
+  /* Write the data pointer and the size of the audio frame payload to a file. */
   fileMap[filePath]->write(audioFrame->data, audioFrame->size);
 }
 
@@ -2393,7 +2404,7 @@ fileHandeMap   = [[NSMapTable alloc] initWithKeyOptions:NSMapTableStrongMemory v
 -(void) onLocalCameraSelected:(VCLocalCamera*)localCamera
 { /* The camera was selected either by a user or automatically. */
   /* Register for local camera Frame callbacks. */
-  /* Register for the event listener with any requested width and height. */ 
+  /* Register for the event listener with any requested width and height. */
   if ( ![vc registerLocalCameraFrameListener:self LocalCamera:localCamera Width:requestedWidth Height:requestedHeight FrameInterval:0] ) {
     [logger Log:@"registerLocalCameraFrameListener registration failed."];
   }
@@ -2415,10 +2426,10 @@ fileHandeMap   = [[NSMapTable alloc] initWithKeyOptions:NSMapTableStrongMemory v
 {
   NSString *filePath = [NSString stringWithFormat:@"/tmp/%@.video", [localCamera GetName]];
   NSFileHandle *myHandle = [fileHandeMap objectForKey:filePath];
-  
+
   /* Decide whether the copy needs padding. */
   if (copyWidthPadding) {
-    /* Write the data pointer and the size of the audio frame payload to a file. */ 
+    /* Write the data pointer and the size of the audio frame payload to a file. */
     NSData *myData = [[NSData alloc] initWithBytes:videoFrame->data length:videoFrame->size];
     [myHandle writeData:myData];
   } else {
@@ -2474,12 +2485,12 @@ fileHandeMap   = [[NSMapTable alloc] initWithKeyOptions:NSMapTableStrongMemory v
 -(void) onLocalMicrophoneSelected:(VCLocalMicrophone*)localMicrophone
 { /* Microphone was selected by user or automatically */
   /* Register for local Microphone Frame callbacks */
-  
+
   if ( ![vc registerLocalMicrophoneFrameListener:self LocalMicrophone:localMicrophone] ) {
     [logger Log:@"registerLocalMicrophoneFrameListener registration failed."];
   }
   /* Set the file handle for a raw recording. */
-  
+
   NSString *filePath = [NSString stringWithFormat:@"/tmp/%@.audio", [localMicrophone GetName]];
   NSFileManager *fileManager = [NSFileManager defaultManager];
   if ([fileManager fileExistsAtPath: filePath ] == NO) {
@@ -2499,7 +2510,7 @@ fileHandeMap   = [[NSMapTable alloc] initWithKeyOptions:NSMapTableStrongMemory v
   NSFileHandle *myHandle = [fileHandeMap objectForKey:filePath];
 
   if ( myHandle != nil ) {
-    /* Write the data pointer and the size of the audio frame payload to a file. */ 
+    /* Write the data pointer and the size of the audio frame payload to a file. */
     NSData *myData = [[NSData alloc] initWithBytes:audioFrame->data length:audioFrame->size];
     [myHandle writeData:myData];
   }
