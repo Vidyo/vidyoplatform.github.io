@@ -2905,7 +2905,7 @@ The VideoClient.js receives the following arguments:
 
 ### SDK Package
 
-This section explains how to download and run the VidyoConnector.html from GitHub repository and make alterations to it.
+This section explains how to download and run the VidyoConnector.html from a GitHub repository and make alterations to it.
 
 #### Prerequisites
 
@@ -2914,10 +2914,8 @@ This section explains how to download and run the VidyoConnector.html from GitHu
 
 #### Download and Run
 
-1. Download the [Web Browser SDK][supportedPlatforms] package.
-1. Extract the downloaded `.zip` file to a folder.
-1. Pull the [vidyoplatform-connector-js](https://github.com/Vidyo/vidyoplatform-connector-macos) repository into the `VidyoClient-WebSDK/samples` directory
-1. Open `VidyoClient-WebSDK/samples/vidyoplatform-connector-js/js/VidyoConnector.html` in a supported browser.
+1. Pull the [vidyoplatform-connector-js](https://github.com/Vidyo/vidyoplatform-connector-js) repository from GitHub.
+1. Open `vidyoplatform-connector-js/VidyoConnector.html` in a supported browser.
 1. If the browser supports WebRTC, the VidyoConnector initializes; otherwise, you are prompted to download and run an installer for the VidyoClient plugin.
 
   >If WebRTC has issues initializing on the endpoint, it might need to be hosted on a secure https server, locally or remotely.
@@ -2939,7 +2937,7 @@ This section explains how to download and run the VidyoConnector.html from GitHu
 
 ### Code Walkthrough
 
-* The `VidyoConnector` app is located in the `samples/vidyoplatform-connector-js/js/` folder. It relies primarily on `VidyoConnector.html`,  `VidyoClient.js`, and `VidyoConnector.js`.
+* The `VidyoConnector` app is located in the `samples/vidyoplatform-connector-js` folder. It relies primarily on `VidyoConnector.html`,  `VidyoClient.js`, and `VidyoConnector.js`.
 * `VidyoConnector.html` loads `VidyoClient.js` from a cloud server.
 * Together, `VidyoConnector.css` and `VidyoConnector.html` control the styling and presentation of the app.
 * The `Images` folder contains icons used by the app.
@@ -2965,8 +2963,8 @@ This guide shows how to quickly download, build, and run the VidyoConnector appl
 
 1. Download the [Windows SDK][supportedPlatforms] package.
 1. Extract the downloaded `.zip` file to a folder.
-1. Pull the [vidyoplatform-connector-win](https://github.com/Vidyo/vidyoplatform-connector-win) repository into the `VidyoClient-WinVS2017SDK/samples` directory
-1. Use the IDE to open the `VidyoClient-WinVS2017SDK/samples/vidyoplatform-connector-win/win/VidyoConnector15.sln`, which is located in the extracted folder.
+1. Pull the [vidyoplatform-connector-win32](https://github.com/Vidyo/vidyoplatform-connector-win32) repository into the `VidyoClient-WinVS2017SDK/samples` directory
+1. Use the IDE to open the `VidyoClient-WinVS2017SDK/samples/vidyoplatform-connector-win32/VidyoConnector15.sln`, which is located in the extracted folder.
 1. In the IDE, click the **Start** button. The IDE will build, load, and run the app on the Windows system.
 1. In the app that appears, enter the required [VidyoConnector parameters.][vidyoConnector]
 1. Click the Connect icon.
@@ -3006,7 +3004,7 @@ For more information, see the Xcode help topic "Adding an Apple ID to Your Accou
 1. Download the [macOS SDK][supportedPlatforms] package.
 1. Extract the downloaded `.zip` file to a folder.
 1. Pull the [vidyoplatform-connector-macos](https://github.com/Vidyo/vidyoplatform-connector-macos) repository into the `VidyoClient-OSXSDK/samples` directory
-1. Use Xcode to open the `VidyoClient-OSXSDK/samples/vidyoplatform-connector-macos/macos/VidyoConnector.xcodeproj`, which is located in the extracted folder.
+1. Use Xcode to open the `VidyoClient-OSXSDK/samples/vidyoplatform-connector-macos/VidyoConnector.xcodeproj`, which is located in the extracted folder.
 1. In Xcode, run the app. Xcode will build, load, and run the app on the Mac.
 1. In the app that appears, enter the required [VidyoConnector parameters.][vidyoConnector]
 1. Click the Connect icon.
@@ -3048,7 +3046,7 @@ For more information, see the Xcode help topic "Running on a Device."
 1. Download the [iOS SDK][supportedPlatforms] package.
 1. Extract the downloaded `.zip` file to a folder.
 1. Pull the [vidyoplatform-connector-ios](https://github.com/Vidyo/vidyoplatform-connector-ios) repository into the `VidyoClient-iOSSDK/samples` directory
-1. Use Xcode to open the `VidyoClient-iOSSDK/samples/vidyoplatform-connector-ios/ios/VidyoConnector.xcodeproj`, which is located in the extracted folder.
+1. Use Xcode to open the `VidyoClient-iOSSDK/samples/vidyoplatform-connector-ios/VidyoConnector.xcodeproj`, which is located in the extracted folder.
 1. In Xcode, run the app. Xcode will build, load, and run the app on the iOS device.
 1. In the app that appears, enter the required [VidyoConnector parameters.][vidyoConnector]
 1. Click the Connect icon.
@@ -3089,7 +3087,7 @@ This section explains how to download and run the Android VidyoConnector applica
 1. Download the [Android SDK][supportedPlatforms] package.
 1. Extract the downloaded `.zip` file to a folder.
 1. Pull the [vidyoplatform-connector-android](https://github.com/Vidyo/vidyoplatform-connector-android) repository into the `VidyoClient-AndroidSDK/samples` directory
-1. In Android Studio, use **Import project** to open and import the Android project for the app, which is located in the extracted folder (select the  `samples/vidyoplatform-connector-android/android` folder to import).
+1. In Android Studio, use **Import project** to open and import the Android project for the app, which is located in the extracted folder (select the  `samples/vidyoplatform-connector-android` folder to import).
 1. In Android Studio, run the app. Android Studio will build, load, and run the app on an Android device.
 1. In the app that appears, enter the required [VidyoConnector parameters][vidyoConnector].
 1. Click the Connect icon.
