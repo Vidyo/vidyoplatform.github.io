@@ -434,7 +434,7 @@ In the VidyoPlatform, rooms are virtual meeting points in your application, whic
 
 A room operates in the VidyoPlatform as a collection of users joining in a video session together. These users are referred to as participants. You can get notified on participant updates or send and receive messages with participants connected to the same room.
 
-You can create a room using the CreateRoom API on the User API.
+You can create a room using the CreateRoom API on the Vidyo Portal User Service. Simply provide a room name and a unique extension (NOTE: extension must have your tenant's extension prefix, and it's always best practice to have all extensions on the same tenant have an identical number of charecters)
 
 ```python
 
