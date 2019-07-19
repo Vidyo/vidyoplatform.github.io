@@ -423,7 +423,7 @@ public class MyClass : Connector.IConnect
 <a class="headerAnchor" name="Portals"></a>
 ## Portals
 
-The portal is a centralized call control service that is part of the VidyoPlatform infrastructure. It acts as the back-end server that handles all web service API requests. The portal can be virtually subdivided into individual logical segments called tenants. If you are working with an individual tenant, use the tenant FQDN for the portal address. 
+The portal is a centralized call control service that is part of the VidyoPlatform infrastructure. It acts as the back-end server that handles all web service API requests. The portal can be virtually subdivided into individual logical segments called tenants. If you are working with an individual tenant, use the tenant FQDN for the portal address.
 
 ---
 
@@ -433,6 +433,27 @@ The portal is a centralized call control service that is part of the VidyoPlatfo
 In the VidyoPlatform, rooms are virtual meeting points in your application, which can be created via the [VidyoPlatform Server API](https://support.vidyocloud.com/hc/en-us/articles/360007515433-Web-Services-API-User-Guide).
 
 A room operates in the VidyoPlatform as a collection of users joining in a video session together. These users are referred to as participants. You can get notified on participant updates or send and receive messages with participants connected to the same room.
+
+You can create a room using the CreateRoom API on the User API.
+/*
+```python
+
+import requests
+from requests.auth import HTTPBasicAuth
+url = "https://<Portal>/services/v1_1/VidyoPortalUserService"
+headers = {'content-type': 'text/xml'}
+body ="""<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://portal.vidyo.com/user/v1_1">
+       <soapenv:Header/>
+       <soapenv:Body>
+          <v1:CreateRoomRequest>
+             <v1:name>room_name</v1:name>
+             <v1:extension><extension_prefix>_<extension></v1:extension>
+        </v1:CreateRoomRequest>
+       </soapenv:Body>
+    </soapenv:Envelope>"""
+response = requests.post(url,data=body,headers=headers, auth=HTTPBasicAuth('user', 'pw'))
+```
+*/
 
 <a class="headerAnchor" name="Participants"></a>
 ### Participants
