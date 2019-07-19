@@ -435,7 +435,7 @@ In the VidyoPlatform, rooms are virtual meeting points in your application, whic
 A room operates in the VidyoPlatform as a collection of users joining in a video session together. These users are referred to as participants. You can get notified on participant updates or send and receive messages with participants connected to the same room.
 
 You can create a room using the CreateRoom API on the User API.
-/*
+
 ```python
 
 import requests
@@ -447,13 +447,13 @@ body ="""<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelo
        <soapenv:Body>
           <v1:CreateRoomRequest>
              <v1:name>room_name</v1:name>
-             <v1:extension><extension_prefix>_<extension></v1:extension>
+             <v1:extension><extension_prefix>_<extension  ></v1:extension>
         </v1:CreateRoomRequest>
        </soapenv:Body>
     </soapenv:Envelope>"""
 response = requests.post(url,data=body,headers=headers, auth=HTTPBasicAuth('user', 'pw'))
 ```
-*/
+
 
 <a class="headerAnchor" name="Participants"></a>
 ### Participants
