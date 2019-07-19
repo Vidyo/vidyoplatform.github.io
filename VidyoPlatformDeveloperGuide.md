@@ -434,26 +434,51 @@ In the VidyoPlatform, rooms are virtual meeting points in your application, whic
 
 A room operates in the VidyoPlatform as a collection of users joining in a video session together. These users are referred to as participants. You can get notified on participant updates or send and receive messages with participants connected to the same room.
 
-You can create a room using the CreateRoom API on the Vidyo Portal User Service. Simply provide a room name and a unique extension (NOTE: extension must have your tenant's extension prefix, and it's always best practice to have all extensions on the same tenant have an identical number of charecters)
+You can create a room using the CreateRoom API on the VidyoPortalUserService. Simply provide a room name and a unique extension (NOTE: extension must have your tenant's extension prefix, and it's always best practice to have all extensions on the same tenant have an identical number of characters)
 
 ```python
 
-import requests
-from requests.auth import HTTPBasicAuth
-url = "https://<Portal>/services/v1_1/VidyoPortalUserService"
-headers = {'content-type': 'text/xml'}
-body ="""<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://portal.vidyo.com/user/v1_1">
-       <soapenv:Header/>
-       <soapenv:Body>
-          <v1:CreateRoomRequest>
-             <v1:name>room_name</v1:name>
-             <v1:extension><extension_prefix>_<extension  ></v1:extension>
-        </v1:CreateRoomRequest>
-       </soapenv:Body>
-    </soapenv:Envelope>"""
-response = requests.post(url,data=body,headers=headers, auth=HTTPBasicAuth('user', 'pw'))
+def createRoom(room_name, extension, username, password, portal):
+    from xml.etree import ElementTree
+    import requests
+    from requests.auth import HTTPBasicAuth
+    url = "https://{0}/services/v1_1/VidyoPortalUserService".format(portal)
+    headers = {'content-type': 'text/xml'}
+    body ="""<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://portal.vidyo.com/user/v1_1">
+           <soapenv:Header/>
+           <soapenv:Body>
+              <v1:CreateRoomRequest>
+                 <v1:name>{0}</v1:name>
+                 <v1:extension>{1}</v1:extension>
+              </v1:CreateRoomRequest>
+           </soapenv:Body>
+        </soapenv:Envelope>""".format(room_name,str(extension))
+    response = requests.post(url,data=body,headers=headers, auth=HTTPBasicAuth(username, password))
+    print (response)
+    tree = ElementTree.fromstring(response.content)
+    roomId = tree.find('.//{http://portal.vidyo.com/user/v1_1}entityID').text
+    print (roomId)
+    return roomId
 ```
 
+After you are done using a room it, assuming there is no need for it in the future, it is best to delete the room - you can do this by using the DeleteRoom API on the VidyoPortalUserService. This can be done using the roomId returned from the createRoom call or you can search for the room you just created using the Admin Service's getRooms calls
+
+```python
+def deleteRoom(id,username,password,portal):
+    import requests
+    from requests.auth import HTTPBasicAuth
+    headers = {'content-type': 'text/xml'}
+    url = "https://{0}/services/v1_1/VidyoPortalUserService".format(portal)
+    body ="""<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://portal.vidyo.com/user/v1_1">
+           <soapenv:Header/>
+           <soapenv:Body>
+              <v1:DeleteRoomRequest>
+                 <v1:roomID>{0}</v1:roomID>
+              </v1:DeleteRoomRequest>
+           </soapenv:Body>
+        </soapenv:Envelope>""".format(str(id))
+    response = requests.post(url,data=body,headers=headers, auth=HTTPBasicAuth('slorello', '12345'))
+```
 
 <a class="headerAnchor" name="Participants"></a>
 ### Participants
