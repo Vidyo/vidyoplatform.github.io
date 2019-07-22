@@ -477,7 +477,7 @@ def deleteRoom(id,username,password,portal):
               </v1:DeleteRoomRequest>
            </soapenv:Body>
         </soapenv:Envelope>""".format(str(id))
-    response = requests.post(url,data=body,headers=headers, auth=HTTPBasicAuth('slorello', '12345'))
+    response = requests.post(url,data=body,headers=headers, auth=HTTPBasicAuth(username, password))
 ```
 
 <a class="headerAnchor" name="Participants"></a>
